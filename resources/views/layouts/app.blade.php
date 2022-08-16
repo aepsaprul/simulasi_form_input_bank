@@ -1,83 +1,175 @@
+@guest
+
+@yield('content')
+
+@else
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ asset('themes/dist/img/logo-daun.png') }}" rel="icon" type="image/x-icon">
+    <title>{{ config('app.name', 'Form Input') }}</title>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="{{ asset('themes/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="{{ asset('themes/plugins/sweetalert2/sweetalert2.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('themes/dist/css/adminlte.min.css') }}">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('style')
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed skin-blue">
+    <div class="wrapper">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__wobble" src="{{ asset('themes/dist/img/logo-biru.png') }}" alt="AdminLTELogo" height="60" width="110">
+        </div>
 
-                    </ul>
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-bell"></i>
+                        <div class="badge_notifikasi"></div>
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+                    </a>
+                    <div class="dropdown_notifikasi"></div>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                            <i class="fa fa-user-circle"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        {{-- <a
+                            class="dropdown-item"
+                            href="{{ route('profile.index') }}">
+                                <i class="fa fa-id-card px-2"></i> Profil
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a
+                            class="dropdown-item"
+                            href="{{ route('change.password.index') }}">
+                                <i class="fa fa-lock-open px-2"></i> Ubah Password
+                        </a> --}}
+                        <div class="dropdown-divider"></div>
+                        <a
+                            class="dropdown-item"
+                            href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                                <i class="fa fa-sign-out-alt px-2"></i> Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            </ul>
         </nav>
+        <!-- /.navbar -->
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-light-primary elevation-2">
+            <!-- Brand Logo -->
+            <a href="#" class="brand-link">
+                <img src="{{ asset('themes/dist/img/logo-daun.png') }}" alt="AdminLTE Logo" class="brand-image">
+                <span class="brand-text font-weight-light">Abata Group</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        @if (Auth::user()->masterKaryawan)
+                            <img src="{{ asset('image/' . Auth::user()->masterKaryawan->foto) }}" class="img-circle elevation-2" alt="User Image">
+                        @else
+                            <img src="{{ asset('themes/dist/img/avatar5.png') }}" class="img-circle elevation-2" alt="User Image">
+                        @endif
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+                        @foreach ($current_nav_button as $item)
+                            @if ($item->navigasiMain->link == '#')
+                                <li class="nav-item {{ request()->is(''.$item->navigasiMain->aktif.'/*') ? 'menu-open' : '' }}">
+                                    <a href="#" class="nav-link {{ request()->is(''.$item->navigasiMain->aktif.'/*') ? 'active' : '' }} text-capitalize">
+                                        <i class="nav-icon {{ $item->navigasiMain->icon }} text-center mr-2" style="width: 30px;"></i> <p>{{ $item->navigasiMain->title }}<i class="right fas fa-angle-left"></i></p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        @foreach ($current_nav_button_sub as $item_sub)
+                                            @if ($item_sub->navigasiSub->link != '#' && $item_sub->navigasiSub->main_id == $item->navigasiMain->id)
+                                                <li class="nav-item">
+                                                    <a href="{{ route($item_sub->navigasiSub->link) }}" class="nav-link {{ request()->is([''.$item_sub->navigasiSub->aktif.'', ''.$item_sub->navigasiSub->aktif.'/*']) ? 'active' : '' }} text-capitalize">
+                                                        <i class="fas fa-angle-right nav-icon"></i> <p>{{ $item_sub->navigasiSub->title }}</p>
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a href="{{ route($item->navigasiMain->link) }}" class="nav-link {{ request()->is([''.$item->navigasiMain->aktif.'', ''.$item->navigasiMain->aktif.'/*']) ? 'active' : '' }} text-capitalize">
+                                        <i class="nav-icon {{ $item->navigasiMain->icon }} text-center mr-2" style="width: 30px;"></i> <p>{{ $item->navigasiMain->title }}</p>
+                                    </a>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        @yield('content')
+
     </div>
+    <!-- ./wrapper -->
+
+    <!-- REQUIRED SCRIPTS -->
+    <!-- jQuery -->
+    <script src="{{ asset('themes/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap -->
+    <script src="{{ asset('themes/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- SweetAlert2 -->
+    <script src="{{ asset('themes/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('themes/dist/js/adminlte.js') }}"></script>
+
+    @yield('script')
 </body>
 </html>
+
+@endguest
