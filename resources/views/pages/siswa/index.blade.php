@@ -32,7 +32,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between">
-                                <a href="{{ route('siswa.create') }}" class="btn bg-gradient-primary btn-sm pl-3 pr-3">
+                                <a href="{{ route('siswa.create') }}" class="btn bg-gradient-primary btn-sm pl-3 pr-3 btn-flat">
                                     <i class="fas fa-plus"></i> Tambah
                                 </a>
                                 @if ($message = Session::get('sukses'))
@@ -60,7 +60,7 @@
                                                 <div class="btn-group">
                                                     <a
                                                         href="#"
-                                                        class="dropdown-toggle btn bg-gradient-primary btn-sm"
+                                                        class="dropdown-toggle btn bg-gradient-primary btn-sm btn-flat"
                                                         data-toggle="dropdown"
                                                         aria-haspopup="true"
                                                         aria-expanded="false">
@@ -105,12 +105,12 @@
                     <h5 class="modal-title">Yakin akan dihapus?</h5>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button class="btn btn-danger" type="button" data-dismiss="modal" style="width: 130px;"><span aria-hidden="true">Tidak</span></button>
-                    <button class="btn btn-primary btn-delete-spinner d-none" disabled style="width: 130px;">
+                    <button class="btn btn-danger btn-flat" type="button" data-dismiss="modal" style="width: 130px;"><span aria-hidden="true">Tidak</span></button>
+                    <button class="btn btn-primary btn-delete-spinner d-none btn-flat" disabled style="width: 130px;">
                         <span class="spinner-grow spinner-grow-sm"></span>
                         Loading...
                     </button>
-                    <button type="submit" class="btn btn-primary btn-delete-yes text-center" style="width: 130px;">
+                    <button type="submit" class="btn btn-primary btn-delete-yes text-center btn-flat" style="width: 130px;">
                         Ya
                     </button>
                 </div>
