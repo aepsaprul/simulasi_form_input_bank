@@ -137,7 +137,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('transaksi') }}" class="nav-link">
                                 <i class="nav-icon fas fa-exchange-alt"></i>
                                 <p class="text-capitalize">transaksi</p>
                             </a>

@@ -68,7 +68,7 @@
                 </div>
             </div>
             <hr>
-            <p class="login-box-msg text-danger text-sm">Nama Sekolah</p>
+            <p class="login-box-msg text-sm">SMK MUHAMMADIYAH</p>
             <!-- /.card-body -->
         </div>
     </div>

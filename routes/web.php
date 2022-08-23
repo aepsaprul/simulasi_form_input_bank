@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\NasabahController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -42,4 +43,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('nasabah/{id}/edit', [NasabahController::class, 'edit'])->name('nasabah.edit');
     Route::post('nasabah/update', [NasabahController::class, 'update'])->name('nasabah.update');
     Route::post('nasabah/delete', [NasabahController::class, 'delete'])->name('nasabah.delete');
+
+    // transaksi
+    Route::get('transaksi', [TransaksiController::class, 'index'])->name('transaksi');
+    Route::get('transaksi/create',[TransaksiController::class, 'create'])->name('transaksi.create');
+    Route::post('transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
+    Route::get('transaksi/{id}/edit', [TransaksiController::class, 'edit'])->name('transaksi.edit');
+    Route::post('transaksi/update', [TransaksiController::class, 'update'])->name('transaksi.update');
+    Route::post('transaksi/delete', [TransaksiController::class, 'delete'])->name('transaksi.delete');
 });
