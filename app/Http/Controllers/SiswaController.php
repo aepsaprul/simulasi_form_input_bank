@@ -25,7 +25,7 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $messages = [
-            'nama_lengkap.required' => 'Nama lengkap harus diisi',
+            'nama.required' => 'Nama lengkap harus diisi',
             'email.required' => 'Email harus diisi',
             'email.email' => 'Email harus diisi dengan tipe email',
             'email.unique' => 'Email sudah dipakai',
@@ -62,7 +62,7 @@ class SiswaController extends Controller
     public function update(Request $request)
     {
         $messages = [
-            'nama_lengkap.required' => 'Nama lengkap harus diisi',
+            'nama.required' => 'Nama lengkap harus diisi',
             'email.required' => 'Email harus diisi',
             'email.email' => 'Email harus diisi dengan tipe email',
             'email.unique' => 'Email sudah dipakai',

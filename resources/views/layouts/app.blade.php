@@ -131,7 +131,7 @@
                             </li>
                         @endif
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('nasabah') }}" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p class="text-capitalize">nasabah</p>
                             </a>

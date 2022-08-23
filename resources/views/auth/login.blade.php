@@ -64,22 +64,11 @@
                 </form>
 
                 <div class="social-auth-links text-center mt-4 mb-3">
-                    <img src="{{ asset('themes/dist/img/logo-biru.png') }}" alt="logo-abata" style="max-width: 100px;">
-                    <span class="text-info text-uppercase font-weight-bold">Human Capital</span>
-                </div>
-                <!-- /.social-auth-links -->
-
-                <div class="mt-5">
-                    {{-- <a href="#" style="font-size: 14px;">Lupa password</a> --}}
-                    @if (Route::has('password.request'))
-                        <a href="{{ route('password.request') }}" style="font-size: 14px;">
-                            {{ __('Lupa password?') }}
-                        </a>
-                    @endif
+                    <img src="{{ asset('assets/logo.png') }}" alt="logo-abata" style="max-width: 100px;">
                 </div>
             </div>
             <hr>
-            <p class="login-box-msg text-danger text-sm">*kendala aplikasi bisa laporkan ke bagian IT</p>
+            <p class="login-box-msg text-danger text-sm">Nama Sekolah</p>
             <!-- /.card-body -->
         </div>
     </div>
