@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Nasabah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class NasabahController extends Controller
@@ -84,6 +85,14 @@ class NasabahController extends Controller
             'nama_ibu' => 'required|max:30'
         ], $messages)->validate();
 
+
+        $nasabah = Nasabah::select(DB::raw('max(rekening) as rekeningTerbesar'))->first();
+
+        $urutan = (int) substr($nasabah->rekeningTerbesar, 3, 3);
+        $urutan++;
+        $kode_awal = 100;
+        $rekening = $kode_awal . sprintf("%03s", $urutan);
+
         $nasabah = new Nasabah;
         $nasabah->nama_lengkap = $request->nama_lengkap;
         $nasabah->status_pernikahan = $request->status_pernikahan;
@@ -105,8 +114,8 @@ class NasabahController extends Controller
         $nasabah->pendidikan = $request->pendidikan;
         $nasabah->pekerjaan = $request->pekerjaan;
         $nasabah->penghasilan = $request->penghasilan;
-        $nasabah->kode = $request->kode;
-        $nasabah->rekening = $request->rekening;
+        $nasabah->kode = 1;
+        $nasabah->rekening = $rekening;
         $nasabah->nama_ibu = $request->nama_ibu;
         $nasabah->save();
 

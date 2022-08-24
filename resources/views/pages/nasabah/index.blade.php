@@ -46,6 +46,7 @@
                                     <tr>
                                         <th class="text-center text-indigo">No</th>
                                         <th class="text-center text-indigo">Nama</th>
+                                        <th class="text-center text-indigo">Rekening</th>
                                         <th class="text-center text-indigo">Nomor HP</th>
                                         <th class="text-center text-indigo">Email</th>
                                         <th class="text-center text-indigo">Aksi</th>
@@ -56,6 +57,7 @@
                                         <tr>
                                             <td class="text-center">{{ $key + 1 }}</td>
                                             <td>{{ $item->nama_lengkap }}</td>
+                                            <td class="text-center">{{ $item->rekening }}</td>
                                             <td class="text-right">{{ $item->nomor_hp }}</td>
                                             <td class="text-center">{{ $item->email }}</td>
                                             <td class="text-center">
