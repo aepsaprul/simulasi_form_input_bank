@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\NavigasiAccess;
 use App\Models\NavigasiButton;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,8 +28,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         view()->composer('*', function ($view)
         {
+            Blade::directive('rupiah', function ( $expression ) { return "<?php echo number_format($expression,0,',','.'); ?>"; });
+
             if (Auth::check()) {
 
                 $current_nav_button = NavigasiButton::whereHas('navigasiAccess', function ($query) {

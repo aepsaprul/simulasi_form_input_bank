@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Transaksi extends Model
 {
     use HasFactory;
+
+    public function nasabah() {
+        return $this->belongsTo(Nasabah::class, 'nasabah_id', 'id');
+    }
 }

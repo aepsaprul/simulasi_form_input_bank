@@ -49,6 +49,7 @@
                                         <th class="text-center text-indigo">Rekening</th>
                                         <th class="text-center text-indigo">Nomor HP</th>
                                         <th class="text-center text-indigo">Email</th>
+                                        <th class="text-center text-indigo">Saldo</th>
                                         <th class="text-center text-indigo">Aksi</th>
                                     </tr>
                                 </thead>
@@ -60,6 +61,7 @@
                                             <td class="text-center">{{ $item->rekening }}</td>
                                             <td class="text-right">{{ $item->nomor_hp }}</td>
                                             <td class="text-center">{{ $item->email }}</td>
+                                            <td class="text-center">@rupiah($item->saldo)</td>
                                             <td class="text-center">
                                                 <div class="btn-group">
                                                     <a

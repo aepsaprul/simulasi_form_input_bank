@@ -45,8 +45,11 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center text-indigo">No</th>
+                                        <th class="text-center text-indigo">Tanggal</th>
                                         <th class="text-center text-indigo">Nasabah</th>
-                                        <th class="text-center text-indigo">Rekening</th>
+                                        <th class="text-center text-indigo">Keluar</th>
+                                        <th class="text-center text-indigo">Masuk</th>
+                                        <th class="text-center text-indigo">Saldo</th>
                                         <th class="text-center text-indigo">Aksi</th>
                                     </tr>
                                 </thead>
@@ -54,8 +57,11 @@
                                     @foreach ($transaksis as $key => $item)
                                         <tr>
                                             <td class="text-center">{{ $key + 1 }}</td>
-                                            <td>{{ $item->nama }}</td>
-                                            <td>{{ $item->email }}</td>
+                                            <td class="text-center">{{ $item->created_at->format('d-m-Y') }}</td>
+                                            <td>@if ($item->nasabah) {{ $item->nasabah->nama_lengkap }} @endif</td>
+                                            <td class="text-right">@rupiah($item->keluar)</td>
+                                            <td class="text-right">@rupiah($item->masuk)</td>
+                                            <td class="text-right">@rupiah($item->saldo)</td>
                                             <td class="text-center">
                                                 <div class="btn-group">
                                                     <a
@@ -67,12 +73,6 @@
                                                             <i class="fas fa-cog"></i>
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                        <a
-                                                            href="{{ route('transaksi.edit', [$item->id]) }}"
-                                                            class="dropdown-item text-indigo btn-edit"
-                                                            data-id="{{ $item->id }}">
-                                                                <i class="fas fa-pencil-alt pr-1"></i> Ubah
-                                                        </a>
                                                         <a
                                                             href="#"
                                                             class="dropdown-item text-indigo btn-delete"
