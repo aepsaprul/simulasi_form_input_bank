@@ -240,13 +240,26 @@ class NasabahController extends Controller
     {
         $nasabah = Nasabah::find($id);
 
-        return view('pages.nasabah.form', ['nasabah' => $nasabah]);
+        return response()->json([
+            'nasabah' => $nasabah
+        ]);
     }
 
-    public function printBuku($id)
+    public function printBuku($nasabah_id, $halaman, $baris)
     {
-        $transaksis = Transaksi::where('nasabah_id', $id)->get();
+        $transaksis = Transaksi::where('nasabah_id', $nasabah_id)->get();
+        $total = count($transaksis);
 
-        return view('pages.nasabah.printBuku', ['transaksis' => $transaksis]);
+        $jumlah_data = 20;
+        $page = $halaman;
+        $mulai = ($page > 1) ? ($page * $jumlah_data) - $jumlah_data : 0;
+        $baris_ke = ($baris > 1) ? $baris : 0;
+
+        $data = Transaksi::where('nasabah_id', $nasabah_id)
+                ->offset($mulai) // page
+                ->limit($jumlah_data) // jumlah halaman yang tampil
+                ->get();
+
+        return view('pages.nasabah.printBuku', ['data' => $data, 'baris' => $baris_ke]);
     }
 }

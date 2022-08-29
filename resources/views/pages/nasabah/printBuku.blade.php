@@ -7,18 +7,35 @@
     <title>Document</title>
 </head>
 <body>
-    <table border="1" style="margin-top: 100px; width: 100%;">
-        @foreach ($transaksis as $key => $item)
+    <table style="margin-top: 100px; width: 100%;">
+        @foreach ($data as $key => $item)
+        @if ($key + 1 >= $baris)
             <tr>
-                <td>{{ $key + 1 }}</td>
-                <td>{{ $item->nasabah->nama_lengkap }}</td>
+                <td>{{ $item->created_at->format('d-m-Y') }}</td>
                 <td>{{ $item->sandi }}</td>
-                <td>{{ $item->keluar }}</td>
-                <td>{{ $item->masuk }}</td>
-                <td>{{ $item->saldo }}</td>
-                <td>K{{ $item->nasabah->id }}</td>
+                <td style="text-align: right;">
+                    @if ($item->keluar)
+                        @rupiah($item->keluar)
+                    @else
+                        -
+                    @endif
+                </td>
+                <td style="text-align: right;">
+                    @if ($item->masuk)
+                        @rupiah($item->masuk)
+                    @else
+                        -
+                    @endif
+                </td>
+                <td style="text-align: right;">@rupiah($item->saldo)</td>
+                <td style="text-align: center;">K{{ $item->nasabah->id }}</td>
             </tr>
+        @endif
         @endforeach
     </table>
+
+    <script>
+        window.print();
+    </script>
 </body>
 </html>

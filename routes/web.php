@@ -45,7 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('nasabah/delete', [NasabahController::class, 'delete'])->name('nasabah.delete');
     Route::get('nasabah/{id}/print_cover', [NasabahController::class, 'printCover'])->name('nasabah.print_cover');
     Route::get('nasabah/{id}/form', [NasabahController::class, 'form'])->name('nasabah.form');
-    Route::post('nasabah/print_buku', [NasabahController::class, 'printBuku'])->name('nasabah.print_buku');
+    Route::get('nasabah/print_buku/{nasabah_id}/nasabah_id/{halaman}/halaman/{baris}/baris', [NasabahController::class, 'printBuku'])->name('nasabah.print_buku');
 
     // transaksi
     Route::get('transaksi', [TransaksiController::class, 'index'])->name('transaksi');

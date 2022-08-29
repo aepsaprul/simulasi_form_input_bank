@@ -20,5 +20,9 @@
             <td style="padding-bottom: 20px;"><span style="margin-left: 200px;">BANK MUHAMMADIYAH</span></td>
         </tr>
     </table>
+
+    <script>
+        window.print();
+    </script>
 </body>
 </html>

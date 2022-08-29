@@ -12,7 +12,7 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        $transaksis = Transaksi::orderBy('id', 'desc')->get();
+        $transaksis = Transaksi::orderBy('id', 'desc')->limit(1000)->get();
 
         return view('pages.transaksi.index', ['transaksis' => $transaksis]);
     }

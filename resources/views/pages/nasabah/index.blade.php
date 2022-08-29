@@ -80,9 +80,9 @@
                                                                 <i class="fas fa-print pr-1"></i> Print Cover
                                                         </a>
                                                         <a
-                                                            href="{{ route('nasabah.form', [$item->id]) }}"
-                                                            target="_blank"
-                                                            class="dropdown-item text-indigo">
+                                                            href="#"
+                                                            class="dropdown-item text-indigo btn-print-buku"
+                                                            data-id="{{ $item->id }}">
                                                                 <i class="fas fa-book pr-1"></i> Print Buku
                                                         </a>
                                                         <a
@@ -109,6 +109,44 @@
             </div>
         </div>
     </section>
+</div>
+
+{{-- modal print buku --}}
+<div class="modal fade modal-print-buku" id="modal-default">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+                <input type="hidden" id="nasabah_id" name="nasabah_id">
+                <div class="modal-header">
+                    <h5 class="modal-title">Print Buku</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="nama_nasabah">Nama Nasabah</label>
+                        <input type="text" name="nama_nasabah" id="nama_nasabah" disabled class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="halaman">Nomor Halaman Buku</label>
+                        <input type="number" name="halaman" id="halaman" class="form-control" max="10" min="1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="baris">Nomor Baris Yang Akan Dicetak</label>
+                        <input type="number" name="baris" id="baris" class="form-control" max="20" min="1" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-create-spinner d-none" disabled style="width: 130px;">
+                        <span class="spinner-grow spinner-grow-sm"></span>
+                        Loading...
+                    </button>
+                    <button type="submit" class="btn btn-primary btn-create-save" style="width: 130px;">
+                        <i class="fas fa-print"></i> Print
+                    </button>
+                </div>
+        </div>
+    </div>
 </div>
 
 {{-- modal delete --}}
@@ -156,6 +194,12 @@
 
 <script>
     $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
         $("#nasabah_tabel").DataTable();
 
         $(document).on('click', '.btn-delete', function (e) {
@@ -168,6 +212,50 @@
         $(document).on('submit', '#form-delete', function (e) {
             $('.btn-delete-spinner').removeClass('d-none');
             $('.btn-delete-yes').addClass('d-none');
+        })
+
+        $(document).on('click', '.btn-print-buku', function (e) {
+            e.preventDefault();
+            $('#nama_nasabah').val("");
+            $('#halaman').val("");
+            $('#baris').val("");
+
+            let id = $(this).attr('data-id');
+            let url = '{{ route("nasabah.form", ":id") }}';
+            url = url.replace(':id', id);
+
+            let formData = {
+                id: id
+            }
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                data: formData,
+                success: function (response) {
+                    $('#nasabah_id').val(response.nasabah.id);
+                    $('#nama_nasabah').val(response.nasabah.nama_lengkap);
+                    $('#halaman').val(1);
+                    $('#baris').val(1);
+
+                    $('.modal-print-buku').modal('show');
+                }
+            })
+        })
+
+        $(document).on('click', '.btn-create-save', function (e) {
+            e.preventDefault();
+
+            let nasabah_id = $('#nasabah_id').val();
+            let halaman = $('#halaman').val();
+            let baris = $('#baris').val();
+
+            url = '{{ route("nasabah.print_buku", [":nasabah_id", ":halaman", ":baris"]) }}';
+            url = url.replace(':nasabah_id', nasabah_id );
+            url = url.replace(':halaman', halaman );
+            url = url.replace(':baris', baris );
+
+            window.open(url);
         })
     });
 </script>
