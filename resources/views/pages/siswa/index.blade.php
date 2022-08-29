@@ -47,6 +47,7 @@
                                         <th class="text-center text-indigo">No</th>
                                         <th class="text-center text-indigo">Nama Siswa</th>
                                         <th class="text-center text-indigo">Email</th>
+                                        <th class="text-center text-indigo">Password</th>
                                         <th class="text-center text-indigo">Aksi</th>
                                     </tr>
                                 </thead>
@@ -56,6 +57,7 @@
                                             <td class="text-center">{{ $key + 1 }}</td>
                                             <td>{{ $item->nama }}</td>
                                             <td>{{ $item->email }}</td>
+                                            <td>{{ $item->kata_sandi }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group">
                                                     <a

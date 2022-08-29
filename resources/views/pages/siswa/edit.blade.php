@@ -36,7 +36,7 @@
                                 <input type="hidden" name="id" id="id" value="{{ $siswa->id }}">
 
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="mb-3">
                                             <label for="nama">Nama</label>
                                             <input type="text" name="nama" id="nama" class="form-control rounded-0 @error('nama') is-invalid @enderror" value="{{ $siswa->nama }}" required maxlength="30">
@@ -45,12 +45,21 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="mb-3">
                                             <label for="email">Email</label>
                                             <input type="email" name="email" id="email" class="form-control rounded-0 @error('email') is-invalid @enderror" value="{{ $siswa->email }}" required maxlength="30">
                                             @error('email')
                                                 <small id="error_email" class="form-text text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                                        <div class="mb-3">
+                                            <label for="kata_sandi">Password</label>
+                                            <input type="text" name="kata_sandi" id="kata_sandi" class="form-control rounded-0 @error('kata_sandi') is-invalid @enderror" value="{{ $siswa->kata_sandi }}" required maxlength="30">
+                                            @error('kata_sandi')
+                                                <small id="error_kata_sandi" class="form-text text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
                                     </div>
