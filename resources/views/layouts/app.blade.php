@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ asset('themes/dist/img/logo-daun.png') }}" rel="icon" type="image/x-icon">
+    <link href="{{ asset('assets/logo.png') }}" rel="icon" type="image/x-icon">
     <title>{{ config('app.name', 'Form Input') }}</title>
 
     <!-- CSRF Token -->
@@ -29,7 +29,7 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__wobble" src="{{ asset('themes/dist/img/logo-biru.png') }}" alt="AdminLTELogo" height="60" width="110">
+            <img class="animation__wobble" src="{{ asset('assets/logo.png') }}" alt="AdminLTELogo" height="100" width="110">
         </div>
 
         <!-- Navbar -->
