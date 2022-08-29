@@ -124,20 +124,20 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         @if (Auth::user()->role == "admin")
                             <li class="nav-item">
-                                <a href="{{ route('siswa') }}" class="nav-link">
+                                <a href="{{ route('siswa') }}" class="nav-link {{ request()->is(['siswa', 'siswa/*']) ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-user-tie"></i>
                                     <p class="text-capitalize">siswa</p>
                                 </a>
                             </li>
                         @endif
                         <li class="nav-item">
-                            <a href="{{ route('nasabah') }}" class="nav-link">
+                            <a href="{{ route('nasabah') }}" class="nav-link {{ request()->is(['nasabah', 'nasabah/*']) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p class="text-capitalize">nasabah</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('transaksi') }}" class="nav-link">
+                            <a href="{{ route('transaksi') }}" class="nav-link {{ request()->is(['transaksi', 'transaksi/*']) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-exchange-alt"></i>
                                 <p class="text-capitalize">transaksi</p>
                             </a>

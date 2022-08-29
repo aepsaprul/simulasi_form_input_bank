@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Nasabah;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -226,5 +227,26 @@ class NasabahController extends Controller
         $nasabah->delete();
 
         return redirect()->route('nasabah')->with('sukses', 'Data berhasil dihapus');
+    }
+
+    public function printCover($id)
+    {
+        $nasabah = Nasabah::find($id);
+
+        return view('pages.nasabah.print', ['nasabah' => $nasabah]);
+    }
+
+    public function form($id)
+    {
+        $nasabah = Nasabah::find($id);
+
+        return view('pages.nasabah.form', ['nasabah' => $nasabah]);
+    }
+
+    public function printBuku($id)
+    {
+        $transaksis = Transaksi::where('nasabah_id', $id)->get();
+
+        return view('pages.nasabah.printBuku', ['transaksis' => $transaksis]);
     }
 }

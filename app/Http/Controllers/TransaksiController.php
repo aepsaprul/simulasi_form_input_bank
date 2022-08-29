@@ -12,7 +12,7 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        $transaksis = Transaksi::get();
+        $transaksis = Transaksi::orderBy('id', 'desc')->get();
 
         return view('pages.transaksi.index', ['transaksis' => $transaksis]);
     }

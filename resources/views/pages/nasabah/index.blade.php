@@ -74,9 +74,20 @@
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right">
                                                         <a
+                                                            href="{{ route('nasabah.print_cover', [$item->id]) }}"
+                                                            target="_blank"
+                                                            class="dropdown-item text-indigo">
+                                                                <i class="fas fa-print pr-1"></i> Print Cover
+                                                        </a>
+                                                        <a
+                                                            href="{{ route('nasabah.form', [$item->id]) }}"
+                                                            target="_blank"
+                                                            class="dropdown-item text-indigo">
+                                                                <i class="fas fa-book pr-1"></i> Print Buku
+                                                        </a>
+                                                        <a
                                                             href="{{ route('nasabah.edit', [$item->id]) }}"
-                                                            class="dropdown-item text-indigo btn-edit"
-                                                            data-id="{{ $item->id }}">
+                                                            class="dropdown-item text-indigo">
                                                                 <i class="fas fa-pencil-alt pr-1"></i> Ubah
                                                         </a>
                                                         <a
