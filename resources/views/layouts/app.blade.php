@@ -87,8 +87,8 @@
         <aside class="main-sidebar sidebar-light-primary elevation-2">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <img src="{{ asset('themes/dist/img/logo-daun.png') }}" alt="AdminLTE Logo" class="brand-image">
-                <span class="brand-text font-weight-light">Abata Group</span>
+                <img src="{{ asset('assets/logo.png') }}" alt="AdminLTE Logo" class="brand-image">
+                <span class="brand-text font-weight-light">SMK</span>
             </a>
 
             <!-- Sidebar -->
