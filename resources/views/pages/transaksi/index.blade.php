@@ -47,8 +47,8 @@
                                         <th class="text-center text-indigo">No</th>
                                         <th class="text-center text-indigo">Tanggal</th>
                                         <th class="text-center text-indigo">Nasabah</th>
-                                        <th class="text-center text-indigo">Keluar</th>
-                                        <th class="text-center text-indigo">Masuk</th>
+                                        <th class="text-center text-indigo">Tarik Tunai</th>
+                                        <th class="text-center text-indigo">Setor Tunai</th>
                                         <th class="text-center text-indigo">Saldo</th>
                                         <th class="text-center text-indigo">Aksi</th>
                                     </tr>

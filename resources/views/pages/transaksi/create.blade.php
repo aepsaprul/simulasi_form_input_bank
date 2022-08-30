@@ -55,8 +55,8 @@
                                             <label for="mutasi">Mutasi</label>
                                             <select name="mutasi" id="mutasi" class="form-control">
                                                 <option value="">--PILIH MUTASI--</option>
-                                                <option value="keluar"  {{ old('mutasi') == "keluar" ? 'selected' : '' }}>Keluar</option>
-                                                <option value="masuk"  {{ old('mutasi') == "masuk" ? 'selected' : '' }}>Masuk</option>
+                                                <option value="keluar"  {{ old('mutasi') == "keluar" ? 'selected' : '' }}>Tarik Tunai</option>
+                                                <option value="masuk"  {{ old('mutasi') == "masuk" ? 'selected' : '' }}>Setor Tunai</option>
                                             </select>
                                             @error('mutasi')
                                                 <small id="error_mutasi" class="form-text text-danger">{{ $message }}</small>

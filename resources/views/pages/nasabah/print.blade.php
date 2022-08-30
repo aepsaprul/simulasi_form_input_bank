@@ -17,7 +17,7 @@
         <tr>
             <td style="padding-bottom: 20px;"><span style="margin-left: 200px;">{{ $nasabah->alamat }}</span></td>
         </tr>
-            <td style="padding-bottom: 20px;"><span style="margin-left: 200px;">BANK MUHAMMADIYAH</span></td>
+            <td style="padding-bottom: 20px;"><span style="margin-left: 200px;">BANK MINI SURYA "BAHAGIA"</span></td>
         </tr>
     </table>
 
