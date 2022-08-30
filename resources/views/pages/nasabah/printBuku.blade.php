@@ -28,7 +28,7 @@
                     @endif
                 </td>
                 <td style="text-align: right;">@rupiah($item->saldo)</td>
-                <td style="text-align: center;">K{{ $item->nasabah->id }}</td>
+                <td style="text-align: center;">K{{ Auth::user()->siswa_id }}</td>
             </tr>
         @endif
         @endforeach

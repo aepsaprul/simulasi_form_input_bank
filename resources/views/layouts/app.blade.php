@@ -67,18 +67,6 @@
                             <i class="fa fa-user-circle"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        {{-- <a
-                            class="dropdown-item"
-                            href="{{ route('profile.index') }}">
-                                <i class="fa fa-id-card px-2"></i> Profil
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a
-                            class="dropdown-item"
-                            href="{{ route('change.password.index') }}">
-                                <i class="fa fa-lock-open px-2"></i> Ubah Password
-                        </a> --}}
-                        <div class="dropdown-divider"></div>
                         <a
                             class="dropdown-item"
                             href="{{ route('logout') }}"
